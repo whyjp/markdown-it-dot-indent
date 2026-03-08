@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-dot-indent",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "markdown-it plugin for .> indent syntax (container block)",
   "type": "module",
   "main": "index.mjs",

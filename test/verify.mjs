@@ -35,6 +35,10 @@ console.log('\n=== RULE 4: > 뒤 공백 필수 ===')
 ok('.> 뒤 공백 없음 → 미매칭', !md.render('.>no space').includes('md-indent-1'))
 ok('.> 뒤 공백 있음 → 매칭', md.render('.> with space').includes('md-indent-1'))
 
+console.log('\n=== RULE 8: fence 코드블록 ===')
+const fenceOut = md.render('.> ```\ncode content\n```')
+ok('.> 안에 fence 코드블록', fenceOut.includes('<pre') && fenceOut.includes('<code') && fenceOut.includes('code content'))
+
 console.log('\n=== RULE 8: 인라인 마크다운 ===')
 const inline = md.render('.> **bold** *italic* `code`')
 ok('bold', inline.includes('<strong>'))
