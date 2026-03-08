@@ -24,6 +24,8 @@ ok('lazy continuation', (() => { const h = md.render('.> a\nb\nc'); return h.inc
 const emptyLineOut = md.render('.> a\n\nb')
 ok('빈 줄 종료 (b는 indent 밖)', emptyLineOut.includes('md-indent') && emptyLineOut.includes('b</p>'))
 ok('중첩 ..> ...>', md.render('.> a\n..> b\n...> c').includes('md-indent-2') && md.render('.> a\n..> b\n...> c').includes('md-indent-3'))
+const sameDepth = md.render('.> a\n.> b\n.> c')
+ok('동일 depth 여러 줄 → 하나의 container', sameDepth.match(/md-indent-1/g).length === 1 && sameDepth.includes('a') && sameDepth.includes('b') && sameDepth.includes('c'))
 
 console.log('\n=== RULE 1–7: 기본 동작 (계속) ===')
 const out = md.render('.> a\n..> b\n...> c')
