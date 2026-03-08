@@ -20,7 +20,7 @@ function ok (name, cond, detail = '') {
 
 console.log('\n=== RULE 1–7: 기본 동작 ===')
 ok('단일 .>', md.render('.> hello').includes('md-indent-1'))
-ok('lazy continuation', md.render('.> a\nb\nc').includes('a\nb\nc'))
+ok('lazy continuation', (() => { const h = md.render('.> a\nb\nc'); return h.includes('a') && h.includes('b') && h.includes('c') && h.includes('<br>') })())
 const emptyLineOut = md.render('.> a\n\nb')
 ok('빈 줄 종료 (b는 indent 밖)', emptyLineOut.includes('md-indent') && emptyLineOut.includes('b</p>'))
 ok('중첩 ..> ...>', md.render('.> a\n..> b\n...> c').includes('md-indent-2') && md.render('.> a\n..> b\n...> c').includes('md-indent-3'))

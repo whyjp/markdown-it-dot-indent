@@ -1,11 +1,11 @@
 /**
- * markdown-it plugin for .> indent syntax
+ * markdown-it plugin for .> indent syntax (CJS build for VSCode etc.)
  * @see https://github.com/whyjp/markdown-indent-proposal
  */
 
-import dotIndentRule from './lib/rules_block/dot_indent.mjs'
+const dotIndentRule = require('./lib/rules_block/dot_indent.cjs')
 
-export default function dotIndentPlugin (md, options = {}) {
+function dotIndentPlugin (md, options = {}) {
   const opts = { maxDepth: 4, ...options }
   md.options.dotIndent = opts
 
@@ -34,3 +34,5 @@ export default function dotIndentPlugin (md, options = {}) {
     return self.renderToken(tokens, idx, _options)
   }
 }
+
+module.exports = dotIndentPlugin
