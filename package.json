@@ -30,6 +30,7 @@
     "markdown-it": "^14.1.0"
   },
   "scripts": {
-    "test": "node test/test.mjs"
+    "test": "node test/test.mjs",
+    "verify": "node test/verify.mjs"
   }
 }
